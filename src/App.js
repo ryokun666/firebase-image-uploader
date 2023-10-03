@@ -4,7 +4,7 @@ import ImageUploader from "./ImageUploader";
 function App() {
   return (
     <div className="App">
-      {/* uplodaer */}
+      {/* アップローダー */}
       <ImageUploader />
     </div>
   );
