@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import React from "react";
 import ImageLogo from "./image.svg";
 import "./ImageUpload.css";
+import CircularProgressWithLabel from "./components/ProgressCircular.jsx";
 import storage from "./firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useState, useRef } from "react";
@@ -69,7 +70,7 @@ const ImageUploader = () => {
       {loading ? (
         <div className="outerBox">
           <h2>アップロード中・・・</h2>
-          <progress value={isProgressStatus} max="100"></progress>
+          <CircularProgressWithLabel value={isProgressStatus} />
           <Button
             variant="contained"
             onClick={cancelUpload}
@@ -83,9 +84,16 @@ const ImageUploader = () => {
           {isUploaded ? (
             <div className="outerBox">
               <h2>アップロード完了🚀 </h2>
-              <a href={shredUrl} target="_blank" rel="noreferrer">
+              <Button
+                variant="contained"
+                color="success"
+                href={shredUrl}
+                target="_blank"
+                rel="noreferrer"
+                size="large"
+              >
                 共有リンク
-              </a>
+              </Button>
               <Button
                 variant="contained"
                 onClick={initialScreen}
@@ -97,9 +105,15 @@ const ImageUploader = () => {
           ) : (
             <div className="outerBox">
               <div className="title">
-                {isCanceled ? <p>アップロードがキャンセルされました。</p> : ""}
-                <h2>画像アップローダー</h2>
-                <p>JpegかPngの画像ファイル</p>
+                {isCanceled ? (
+                  <h3 style={{ color: "red" }}>
+                    アップロードがキャンセルされました。
+                  </h3>
+                ) : (
+                  ""
+                )}
+                <h2>画像共有くん</h2>
+                <p>jpgかpngの画像ファイル</p>
               </div>
               <div className="imageUplodeBox">
                 <div className="imageLogoAndText">

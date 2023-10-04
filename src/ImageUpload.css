@@ -9,6 +9,8 @@
   border-radius: 10px;
   box-shadow: 0px 0px 8px gray;
   color: #333;
+  width: 500px;
+  height: 400px;
 }
 
 .outerBox h2 {
@@ -20,6 +22,7 @@
   border: 2px dashed #2d6395;
   padding: 35px 60px;
   position: relative;
+
 }
 
 .imageLogoAndText p {

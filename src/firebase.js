@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
+import { GoogleAuthProvider } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,3 +18,9 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
 export default storage;
+
+const auth = getAuth(app);
+// どのGoogleアカウントでログインするかみたいなポップアップを表示させる。
+const provider = new GoogleAuthProvider();
+
+export { auth, provider };
